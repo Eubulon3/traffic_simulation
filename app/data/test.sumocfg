@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+    <input>
+        <net-file value="/Users/chashu/Desktop/dev/sumorl-venv/app/data/ehira/ehira.net.xml"/>
+        <route-files value="/Users/chashu/Desktop/dev/sumorl-venv/app/data/ehira/rou_a/ehira_a.rou.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="54900"/>
+    </time>
+    <time-to-teleport value="-1"/>
+</configuration>
