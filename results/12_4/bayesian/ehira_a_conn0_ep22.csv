@@ -1,0 +1,3 @@
+step,system_total_stopped,system_total_waiting_time,system_mean_waiting_time,system_mean_speed,J5_stopped,J5_accumulated_waiting_time,J5_average_speed,agents_total_stopped,agents_total_accumulated_waiting_time
+0.0,0,0.0,0.0,0.0,0,0.0,1.0,0,0.0
+5.0,0,0.0,0.0,5.352206338681281,0,0.0,0.4098141868318856,0,0.0

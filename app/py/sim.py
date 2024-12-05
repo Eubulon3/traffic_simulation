@@ -17,15 +17,15 @@ def my_reward_fn(traffic_tignal):
     total_waiting_time = sum(waiting_time_per_lane)
     return -total_waiting_time
 
-def create_env(num_seconds:int, pattern:list, pattern_num:int):
+def create_env(num_seconds:int, net_name: str, route_type: str):
     return CustomSumoEnvironment(
-        net_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/4road_intersection/net/{pattern[pattern_num-1]}.net.xml",
-        route_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/4road_intersection/rou/{pattern[pattern_num-1]}.rou.xml",
-        out_csv_name=f"/Users/chashu/Desktop/dev/sumorl-venv/app/outputs/4road_intersection_pattern{str(int(pattern_num))}",
+        net_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/{net_name}/{net_name}.net.xml",
+        route_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/{net_name}/rou_{route_type}/{net_name}_{route_type}.rou.xml",
+        out_csv_name=f"/Users/chashu/Desktop/dev/sumorl-venv/app/outputs/{net_name}_{route_type}",
         use_gui=True,
         begin_time=0,
         num_seconds=num_seconds,
-        time_to_teleport=-1,
+        time_to_teleport=800,
         yellow_time=3,
         delta_time=5,
         min_green=10,
@@ -37,18 +37,18 @@ def create_model(env):
     return DQN(
         env=env,
         policy="MlpPolicy",
-        learning_rate=3e-2,
+        learning_rate=1e-2,
         learning_starts=1000,
-        buffer_size=50000,
-        train_freq=1,
-        target_update_interval=2700,
-        exploration_fraction=0.24,
-        exploration_initial_eps=0.83,
-        exploration_final_eps=0.01,
+        buffer_size=478864,
+        train_freq=3,
+        target_update_interval=7395,
+        exploration_fraction=0.12,
+        exploration_initial_eps=0.22,
+        exploration_final_eps=0.07,
         verbose=1,
     )
 
-def evaluation_model(env, pattern_num):
+def evaluation_model(env, net_name: str, route_type: str):
     epi_rewards = []
     obs, info = env.reset()
     done = False
@@ -58,32 +58,28 @@ def evaluation_model(env, pattern_num):
         step_result = env.step(action)
         
         obs, rewards, terminated, truncated, info = step_result
-        done = truncated
         current_step = info.get("step")
-        epi_rewards.append(rewards)
-        
-        percent = (current_step / num_seconds) * 100
-        if percent % 10 == 0:
-            print(f"{int(percent)}% completed")
+
+        if current_step >= 72000:
+            done = True
 
         if done:
             print("シミュレーション終了.")
-            avg_reward = np.mean(epi_rewards)
-            env.save_csv(f"/Users/chashu/Desktop/dev/sumorl-venv/app/outputs/4road_intersection_pattern{str(int(pattern_num))}", 0)
-            print(f"平均車両待ち時間: {avg_reward}")
+            env.save_csv(f"/Users/chashu/Desktop/dev/sumorl-venv/app/outputs/{net_name}_{route_type}", 0)
             break
 
 if __name__ == "__main__":
-    num_seconds:int = 50000
-    pattern_num:int = 4
-    pattern:list = ["2way", "2way_right-arrow", "2way_right-lane", "3way"]
+    timesteps = 72000
+    num_seconds:int = timesteps * 5
+    net_name = "ehira"
+    route_type = "b"
 
-    env = create_env(num_seconds, pattern, pattern_num)
+    env = create_env(num_seconds, net_name, route_type)
     model = create_model(env)
 
-    model.learn(total_timesteps=num_seconds)
+    model.learn(total_timesteps=timesteps)
 
-    evaluation_model(env, pattern_num)
+    evaluation_model(env, net_name, route_type)
 
     
 

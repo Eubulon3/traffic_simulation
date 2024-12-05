@@ -20,8 +20,9 @@ class CustomTrafficSignal(TrafficSignal):
         self.red_dict = {}
         for phase in phases:
             state = phase.state
-            if "y" not in state and (state.count("r") + state.count("s") != len(state)): #黄を含まない かつ 全てが赤or停止ではない時
-                self.green_phases.append(self.sumo.trafficlight.Phase(60, state)) #それを緑リストに格納
+            if "y" not in state and (state.count("r") + state.count("s") != len(state)): #黄を含まない かつ 全てが赤or停止ではない
+                if phase.duration >= 8:
+                    self.green_phases.append(self.sumo.trafficlight.Phase(60, state)) #それを緑リストに格納
         self.num_green_phases = len(self.green_phases)
         self.all_phases = self.green_phases.copy()
 
@@ -30,18 +31,16 @@ class CustomTrafficSignal(TrafficSignal):
                 if i == j:
                     continue
                 yellow_state = ""
+                red_state = ""
                 for s in range(len(p1.state)):
                     if (p1.state[s] == "G" or p1.state[s] == "g") and (p2.state[s] == "r" or p2.state[s] == "s"):
                         yellow_state += "y" #あるフェーズとその次のフェーズが青→赤であれば、その場所を"y"にしたstateを作成
+                        red_state += "r"
                     else:
                         yellow_state += p1.state[s] #そうでなければ、そのままの信号を維持
+                        red_state += p1.state[s]
                 self.yellow_dict[(i, j)] = len(self.all_phases) #key: 黄が使われる場所, value: all_phasesに黄が追加される場所
                 self.all_phases.append(self.sumo.trafficlight.Phase(self.yellow_time, yellow_state))
-                
-                #以下5行追加
-                red_state = ""
-                for s in range(len(p1.state)):
-                    red_state += "r"
                 self.red_dict[(self.yellow_dict[(i, j)], j)] = len(self.all_phases) #key: 赤が使われる場所, value: all_phasesに赤が追加される場所
                 self.all_phases.append(self.sumo.trafficlight.Phase(self.red_time, red_state))
 
@@ -51,6 +50,7 @@ class CustomTrafficSignal(TrafficSignal):
         logic.phases = self.all_phases
         self.sumo.trafficlight.setProgramLogic(self.id, logic)
         self.sumo.trafficlight.setRedYellowGreenState(self.id, self.all_phases[0].state)
+
 
     def update(self):
         self.time_since_last_phase_change += 1

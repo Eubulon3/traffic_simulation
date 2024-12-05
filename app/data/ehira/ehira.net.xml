@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-11-28 18:06:21 by Eclipse SUMO netedit Version 1.20.0
+<!-- generated on 2024-12-04 13:33:18 by Eclipse SUMO netedit Version 1.20.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/neteditConfiguration.xsd">
 
     <input>
@@ -52,10 +52,10 @@
         <lane id=":se0_1_2" index="2" disallow="pedestrian" speed="13.89" length="21.29" shape="45.60,-64.01 43.03,-58.55 41.84,-54.27 40.60,-49.87 37.87,-44.03"/>
     </edge>
     <edge id=":sw0_0" function="internal">
-        <lane id=":sw0_0_0" index="0" disallow="pedestrian" speed="13.89" length="23.56" shape="-27.80,-90.38 -22.54,-67.52"/>
-        <lane id=":sw0_0_1" index="1" disallow="pedestrian" speed="13.89" length="23.56" shape="-24.68,-91.12 -19.42,-68.24"/>
-        <lane id=":sw0_0_2" index="2" disallow="pedestrian" speed="13.89" length="23.56" shape="-21.57,-91.85 -16.30,-68.95"/>
-        <lane id=":sw0_0_3" index="3" disallow="pedestrian" speed="13.89" length="23.56" shape="-21.57,-91.85 -19.48,-85.14 -17.35,-80.77 -15.23,-76.39 -13.18,-69.67"/>
+        <lane id=":sw0_0_0" index="0" disallow="pedestrian" speed="13.89" length="7.16" shape="-24.14,-74.29 -22.54,-67.52"/>
+        <lane id=":sw0_0_1" index="1" disallow="pedestrian" speed="13.89" length="7.16" shape="-21.02,-74.98 -19.42,-68.24"/>
+        <lane id=":sw0_0_2" index="2" disallow="pedestrian" speed="13.89" length="7.16" shape="-17.89,-75.67 -16.30,-68.95"/>
+        <lane id=":sw0_0_3" index="3" disallow="pedestrian" speed="13.89" length="7.16" shape="-17.89,-75.67 -16.91,-73.69 -15.53,-72.67 -14.16,-71.65 -13.18,-69.67"/>
     </edge>
     <edge id=":sw1_0" function="internal">
         <lane id=":sw1_0_0" index="0" disallow="pedestrian" speed="6.60" length="7.80" shape="10.12,-28.52 8.32,-28.81 6.86,-29.74 5.76,-31.31 5.01,-33.51"/>
@@ -180,10 +180,10 @@
         <lane id="se0_ts_1" index="1" disallow="pedestrian" speed="13.89" length="22.90" shape="35.09,-45.62 23.84,-25.68"/>
         <lane id="se0_ts_2" index="2" disallow="pedestrian" speed="13.89" length="22.90" shape="37.87,-44.03 26.62,-24.10"/>
     </edge>
-    <edge id="sw01_sw0" from="sw01" to="sw0" priority="-1" shape="-27.25,-122.93 -20.01,-92.22">
-        <lane id="sw01_sw0_0" index="0" disallow="pedestrian" speed="13.89" length="31.55" shape="-35.04,-121.09 -27.80,-90.38"/>
-        <lane id="sw01_sw0_1" index="1" disallow="pedestrian" speed="13.89" length="31.55" shape="-31.92,-121.83 -24.68,-91.12"/>
-        <lane id="sw01_sw0_2" index="2" disallow="pedestrian" speed="13.89" length="31.55" shape="-28.81,-122.56 -21.57,-91.85"/>
+    <edge id="sw01_sw0" from="sw01" to="sw0" priority="-1" shape="-27.25,-122.93 -16.37,-76.18">
+        <lane id="sw01_sw0_0" index="0" disallow="pedestrian" speed="13.89" length="48.11" shape="-35.04,-121.12 -24.14,-74.29"/>
+        <lane id="sw01_sw0_1" index="1" disallow="pedestrian" speed="13.89" length="48.11" shape="-31.93,-121.84 -21.02,-74.98"/>
+        <lane id="sw01_sw0_2" index="2" disallow="pedestrian" speed="13.89" length="48.11" shape="-28.81,-122.57 -17.89,-75.67"/>
     </edge>
     <edge id="sw0_ts" from="sw0" to="ts" priority="-1" shape="-11.62,-70.03 -1.62,-26.54">
         <lane id="sw0_ts_0" index="0" disallow="pedestrian" speed="13.89" length="46.83" shape="-22.54,-67.52 -12.02,-21.81"/>
@@ -224,22 +224,22 @@
     </edge>
 
     <tlLogic id="J5" type="static" programID="0" offset="0">
-        <phase duration="33.60" state="rrrrrrrrrrrrGGgrrrrGGGGrr"/>
-        <phase duration="33.60" state="rrrrrrrrrrrryygrrrrGyyyrr"/>
-        <phase duration="33.60" state="rrrrrrrrrrrrrrgrrrrGrrrrr"/>
-        <phase duration="10.80" state="rrrrrrrrrGGGrrgrrrrGrrrgg"/>
-        <phase duration="10.80" state="rrrrrrrrrGGGrrgrrrryrrryy"/>
-        <phase duration="10.80" state="rrrrrrrrrGGGrrgrrrrrrrrrr"/>
-        <phase duration="20.40" state="GGGGgrrrrGGGrrgrrrrrrrrrr"/>
-        <phase duration="20.40" state="GGGGgrrrryyyrryrrrrrrrrrr"/>
-        <phase duration="10.80" state="GGGGGrrrrrrrrrrrrrrrrrrrr"/>
-        <phase duration="10.80" state="yyyyyrrrrrrrrrrrrrrrrrrrr"/>
-        <phase duration="2"  state="rrrrrrrrrrrrrrrrrrrrrrrrr"/>
-        <phase duration="33.60" state="rrrrrGGGgrrrrrrGGggrrrrrr"/>
-        <phase duration="33.60" state="rrrrryyyyrrrrrrGGggrrrrrr"/>
-        <phase duration="10.80" state="rrrrrrrrrrrrrrrGGGGrrrrrr"/>
-        <phase duration="10.80" state="rrrrrrrrrrrrrrryyyyrrrrrr"/>
-        <phase duration="2"  state="rrrrrrrrrrrrrrrrrrrrrrrrr"/>
+        <phase duration="33.60" state="rrrrrrrrrrrrGGgrrrrGGGGrr" name="split1"/>
+        <phase duration="3"  state="rrrrrrrrrrrryygrrrrGyyyrr"/>
+        <phase duration="3"  state="rrrrrrrrrrrrrrgrrrrGrrrrr"/>
+        <phase duration="10.80" state="rrrrrrrrrGGGrrgrrrrGrrrgg" name="split2"/>
+        <phase duration="3"  state="rrrrrrrrrGGGrrgrrrryrrryy"/>
+        <phase duration="3"  state="rrrrrrrrrGGGrrgrrrrrrrrrr"/>
+        <phase duration="20.40" state="GGGGgrrrrGGGrrgrrrrrrrrrr" name="split3"/>
+        <phase duration="3"  state="GGGGgrrrryyyrryrrrrrrrrrr"/>
+        <phase duration="10.80" state="GGGGGrrrrrrrrrrrrrrrrrrrr" name="split4"/>
+        <phase duration="3"  state="yyyyyrrrrrrrrrrrrrrrrrrrr"/>
+        <phase duration="3"  state="rrrrrrrrrrrrrrrrrrrrrrrrr"/>
+        <phase duration="33.60" state="rrrrrGGGgrrrrrrGGggrrrrrr" name="split5"/>
+        <phase duration="3"  state="rrrrryyyyrrrrrrGGggrrrrrr"/>
+        <phase duration="10.80" state="rrrrrrrrrrrrrrrGGGGrrrrrr" name="split6"/>
+        <phase duration="3"  state="rrrrrrrrrrrrrrryyyyrrrrrr"/>
+        <phase duration="3"  state="rrrrrrrrrrrrrrrrrrrrrrrrr"/>
     </tlLogic>
 
     <junction id="e0" type="dead_end" x="131.91" y="8.99" incLanes="" intLanes="" shape="131.91,8.99 132.17,5.80"/>
@@ -261,13 +261,13 @@
     </junction>
     <junction id="se01" type="dead_end" x="85.32" y="-129.60" incLanes="" intLanes="" shape="85.32,-129.60 79.78,-132.80"/>
     <junction id="se1" type="dead_end" x="88.38" y="-129.54" incLanes="ts_se1_0 ts_se1_1" intLanes="" shape="93.95,-126.38 88.38,-129.54"/>
-    <junction id="sw0" type="priority" x="-19.91" y="-88.35" incLanes="sw01_sw0_0 sw01_sw0_1 sw01_sw0_2" intLanes=":sw0_0_0 :sw0_0_1 :sw0_0_2 :sw0_0_3" shape="-11.62,-70.03 -24.09,-67.16 -29.35,-90.02 -20.01,-92.22 -18.63,-87.37 -17.22,-83.90 -15.79,-81.13 -14.37,-78.36 -12.98,-74.89">
+    <junction id="sw0" type="priority" x="-19.91" y="-88.35" incLanes="sw01_sw0_0 sw01_sw0_1 sw01_sw0_2" intLanes=":sw0_0_0 :sw0_0_1 :sw0_0_2 :sw0_0_3" shape="-11.62,-70.03 -24.09,-67.16 -25.70,-73.95 -16.26,-76.03 -14.64,-74.65 -12.57,-74.34" customShape="1">
         <request index="0" response="0000" foes="0000" cont="0"/>
         <request index="1" response="0000" foes="0000" cont="0"/>
         <request index="2" response="0000" foes="0000" cont="0"/>
         <request index="3" response="0000" foes="0000" cont="0"/>
     </junction>
-    <junction id="sw01" type="dead_end" x="-27.25" y="-122.93" incLanes="" intLanes="" shape="-27.25,-122.93 -36.59,-120.73"/>
+    <junction id="sw01" type="dead_end" x="-27.25" y="-122.93" incLanes="" intLanes="" shape="-27.25,-122.93 -36.60,-120.75"/>
     <junction id="sw1" type="priority" x="0.45" y="-32.98" incLanes="se0_sw1_0 ts_sw1_0 ts_sw1_1" intLanes=":sw1_0_0 :sw1_1_0 :sw1_1_1" shape="7.89,-31.28 10.12,-29.97 10.13,-26.95 6.67,-27.78 4.23,-29.86 -1.86,-28.13 -2.75,-31.63 6.85,-33.96" customShape="1">
         <request index="0" response="000" foes="000" cont="0"/>
         <request index="1" response="000" foes="000" cont="0"/>
