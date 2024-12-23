@@ -2,8 +2,8 @@
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
     <input>
-        <net-file value="/Users/chashu/Desktop/dev/sumorl-venv/app/data/ehira/ehira.net.xml"/>
-        <route-files value="/Users/chashu/Desktop/dev/sumorl-venv/app/data/ehira/rou_b/ehira_b.rou.xml"/>
+        <net-file value="/Users/chashu/Desktop/dev/sumorl-venv/app/data/tanimachi9/tanimachi9.net.xml"/>
+        <route-files value="/Users/chashu/Desktop/dev/sumorl-venv/app/data/tanimachi9/rou_a/tanimachi9_a.rou.xml"/>
     </input>
     <time>
         <begin value="0"/>

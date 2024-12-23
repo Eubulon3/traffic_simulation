@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-10-31 13:52:57.592364 by randomTrips.py UNKNOWN
+<configuration>
+    <net-file value="/Users/chashu/2024-11-01-10-25-19/osm.net.xml.gz"/>
+    <output-trip-file value="./data/rou/output.rou.xml"/>
+    <route-file value="100"/>
+    <period value="10.0"/>
+</configuration>
+-->
+
+<routes>
+    <vType id="car_70kmh" maxSpeed="70" />
+    <!-- <vType id="pedestrian" vClass="pedestrian"/> -->
+
+    <route id = "route_nw" edges = "n01_n0 n0_ts ts_w1"/>
+    <route id = "route_ns" edges = "n01_n0 n0_ts ts_s1 s1_s11"/>
+    <route id = "route_ns_up" edges = "n01_n0 n0_s1 s1_s11"/>
+    <route id = "route_ne" edges = "n01_n0 n0_ts ts_e1"/>
+
+    <route id = "route_ws" edges = "w0_ts ts_s1 s1_s11"/>
+    <route id = "route_we" edges = "w0_ts ts_e1"/>
+    <route id = "route_wn" edges = "w0_ts ts_n1 n1_n11"/>
+
+    <route id = "route_se" edges = "s01_s0 s0_ts ts_e1"/>
+    <route id = "route_sn" edges = "s01_s0 s0_ts ts_n1 n1_n11"/>
+    <route id = "route_sn_up" edges = "s01_s0 s0_n1 n1_n11"/>
+    <route id = "route_sw" edges = "s01_s0 s0_ts ts_w1"/>
+
+    <route id = "route_en" edges = "e0_ts ts_n1 n1_n11"/>
+    <route id = "route_ew" edges = "e0_ts ts_w1"/>
+    <route id = "route_es" edges = "e0_ts ts_s1 s1_s11"/>
+
+
+    <!-- 一車線あたり主道路800台・従道路400台、主道路70% -->
+    <flow id = "flow_nw" route = "route_nw" begin = "0" end = "2000000" vehsPerHour = "556" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_ns" route = "route_ns" begin = "0" end = "2000000" vehsPerHour = "92" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_ns_up" route = "route_ns_up" begin = "0" end = "2000000" vehsPerHour = "834" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_ne" route = "route_ne" begin = "0" end = "2000000" vehsPerHour = "250" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+
+    <flow id = "flow_ws" route = "route_ws" begin = "0" end = "2000000" vehsPerHour = "556" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_we" route = "route_we" begin = "0" end = "2000000" vehsPerHour = "417" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_wn" route = "route_wn" begin = "0" end = "2000000" vehsPerHour = "417" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+
+    <flow id = "flow_se" route = "route_se" begin = "0" end = "2000000" vehsPerHour = "700" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_sn" route = "route_sn" begin = "0" end = "2000000" vehsPerHour = "100" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_sn_up" route = "route_sn_up" begin = "0" end = "2000000" vehsPerHour = "900" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_sw" route = "route_sw" begin = "0" end = "2000000" vehsPerHour = "300" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    
+    <flow id = "flow_en" route = "route_en" begin = "0" end = "2000000" vehsPerHour = "500" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_ew" route = "route_ew" begin = "0" end = "2000000" vehsPerHour = "500" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    <flow id = "flow_es" route = "route_es" begin = "0" end = "2000000" vehsPerHour = "250" deaprtSpeed = "max" departLane = "best" type = "car_70kmh"/>
+    
+</routes>

@@ -69,7 +69,8 @@ if __name__ == "__main__":
     prs.add_argument("-sep", type=str, default=",", help="Values separator on file.\n")
     prs.add_argument("-xlabel", type=str, default="Time step (seconds)", help="X axis label.\n")
     prs.add_argument("-ylabel", type=str, default="Total waiting time (s)", help="Y axis label.\n")
-    prs.add_argument("-output", type=str, default=None, help="PDF output filename.\n")
+    prs.add_argument("-output", type=str, default=None, help="JPG output filename.\n")
+    prs.add_argument("-output_format", type=str, default="jpg", help="output format.\n")
 
     args = prs.parse_args()
     labels = cycle(args.l) if args.l is not None else cycle([str(i) for i in range(len(args.f))])
@@ -95,6 +96,6 @@ if __name__ == "__main__":
     plt.ylim(bottom=0)
 
     if args.output is not None:
-        plt.savefig(args.output + ".pdf", bbox_inches="tight")
+        plt.savefig(args.output + ".jpg", bbox_inches="tight", dpi=300)
 
     plt.show()

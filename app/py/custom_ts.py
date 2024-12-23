@@ -7,7 +7,7 @@ class CustomTrafficSignal(TrafficSignal):
         self.is_red = False
 
     def _build_phases(self):
-        self.red_time: int = 4
+        self.red_time: int = 6
 
         phases = self.sumo.trafficlight.getAllProgramLogics(self.id)[0].phases
         #print(phases) -> (Phase(duration=39.0, state='GGGggrrrrGGGggrrrr', minDur=13.0, maxDur=50.0), Phase(duration=6.0, state='yyyyyrrrryyyyyrrrr', minDur=6.0, maxDur=6.0), Phase(duration=3.0, state='rrrrrrrrrrrrrrrrrr', minDur=3.0, maxDur=3.0), Phase(duration=39.0, state='rrrrrGGGgrrrrrGGGg', minDur=5.0, maxDur=50.0), Phase(duration=6.0, state='rrrrryyyyrrrrryyyy', minDur=6.0, maxDur=6.0), Phase(duration=3.0, state='rrrrrrrrrrrrrrrrrr', minDur=3.0, maxDur=3.0))
@@ -33,11 +33,17 @@ class CustomTrafficSignal(TrafficSignal):
                 yellow_state = ""
                 red_state = ""
                 for s in range(len(p1.state)):
-                    if (p1.state[s] == "G" or p1.state[s] == "g") and (p2.state[s] == "r" or p2.state[s] == "s"):
-                        yellow_state += "y" #あるフェーズとその次のフェーズが青→赤であれば、その場所を"y"にしたstateを作成
+                    # if (p1.state[s] == "G" or p1.state[s] == "g") and (p2.state[s] == "r" or p2.state[s] == "s"):
+                    #     yellow_state += "y" #あるフェーズとその次のフェーズが青→赤であれば、その場所を"y"にしたstateを作成
+                    #     red_state += "r"
+                    # else:
+                    #     yellow_state += p1.state[s] #そうでなければ、そのままの信号を維持
+                    #     red_state += p1.state[s]
+                    if p1.state[s] == "G" or p1.state[s] == "g":
+                        yellow_state += "y"
                         red_state += "r"
                     else:
-                        yellow_state += p1.state[s] #そうでなければ、そのままの信号を維持
+                        yellow_state += p1.state[s]
                         red_state += p1.state[s]
                 self.yellow_dict[(i, j)] = len(self.all_phases) #key: 黄が使われる場所, value: all_phasesに黄が追加される場所
                 self.all_phases.append(self.sumo.trafficlight.Phase(self.yellow_time, yellow_state))

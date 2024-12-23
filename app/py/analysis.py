@@ -1,12 +1,14 @@
 import pandas as pd
 import json
 
-sim_date = "11_21"
-pattern_num = 4
+sim_date = "12_11"
+net_name = "ehira"
+route_type = "b"
+reward = "total_waiting_time"
 
-dqn_csv_file = f"/Users/chashu/Desktop/dev/sumorl-venv/results/{sim_date}/4road_intersection_pattern{str(pattern_num)}/4road_intersection_pattern{str(pattern_num)}_conn0_ep0.csv"
-bl_csv_file = f"/Users/chashu/Desktop/dev/sumorl-venv/results/{sim_date}/4road_intersection_pattern{str(pattern_num)}/4road_intersection_pattern{str(pattern_num)}_bl_conn0_ep0.csv"
-output_json_path = f"/Users/chashu/Desktop/dev/sumorl-venv/results/{sim_date}/4road_intersection_pattern{str(pattern_num)}/4road_intersection_pattern{str(pattern_num)}_analysis.json"
+dqn_csv_file = f"/Users/chashu/Desktop/dev/sumorl-venv/results/{sim_date}/{net_name}_{route_type}/{net_name}_{route_type}_{reward}_conn0_ep0.csv"
+bl_csv_file = f"/Users/chashu/Desktop/dev/sumorl-venv/results/{sim_date}/{net_name}_{route_type}/{net_name}_{route_type}_bl_conn0_ep0.csv"
+output_json_path = f"/Users/chashu/Desktop/dev/sumorl-venv/results/{sim_date}/{net_name}_{route_type}/{net_name}_{route_type}_{reward}_analysis.json"
 
 dqn_data = pd.read_csv(dqn_csv_file)
 bl_data = pd.read_csv(bl_csv_file)
@@ -32,6 +34,7 @@ for i in range(len(target_colmun)):
     rate_dict[target_colmun[i]] = rate_of_change
 
 serializable_dict = {key: value.tolist() for key, value in rate_dict.items()}
+
 with open(output_json_path, "w", encoding="utf-8") as file:
     json.dump(serializable_dict, file, ensure_ascii=False, indent=4)
 

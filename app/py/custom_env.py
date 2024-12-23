@@ -5,6 +5,7 @@ import traci
 import sumolib
 from typing import Callable, Optional, Tuple, Union
 import os
+import numpy as np
 
 LIBSUMO = "LIBSUMO_AS_TRACI" in os.environ
 
@@ -177,6 +178,24 @@ class CustomSumoEnvironment(SumoEnvironment):
             return self._compute_observations()[self.ts_ids[0]], self._compute_info()
         else:
             return self._compute_observations()
+    
+    def _get_system_info(self):
+        vehicles = self.sumo.vehicle.getIDList()
+        speeds = [self.sumo.vehicle.getSpeed(vehicle) for vehicle in vehicles]
+        waiting_times = [self.sumo.vehicle.getWaitingTime(vehicle) for vehicle in vehicles]
+        time_loss = [self.sumo.vehicle.getTimeLoss(vehicle) for vehicle in vehicles]
+        depart_delay = [self.sumo.vehicle.getDepartDelay(vehicle) for vehicle in vehicles]
+        return {
+            # In SUMO, a vehicle is considered halting if its speed is below 0.1 m/s
+            "system_total_stopped": sum(int(speed < 0.1) for speed in speeds),
+            "system_total_waiting_time": sum(waiting_times),
+            "system_mean_waiting_time": 0.0 if len(vehicles) == 0 else np.mean(waiting_times),
+            "system_mean_speed": 0.0 if len(vehicles) == 0 else np.mean(speeds),
+            "ststem_total_time_loss": sum(time_loss),
+            "system_mean_time_loss": 0.0 if len(vehicles) == 0 else np.mean(time_loss),
+            "system_total_depart_delay": sum(depart_delay),
+            "system_mean_depart_delay": 0.0 if len(vehicles) == 0 else np.mean(depart_delay)
+        }
 
     def _compute_dones(self):
         dones = {ts_id: False for ts_id in self.ts_ids}

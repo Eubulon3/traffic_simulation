@@ -10,7 +10,7 @@
 -->
 
 <routes>
-    <vType id="car_60kmh" maxSpeed="70" />
+    <vType id="car_60kmh" maxSpeed="70"/>
     <vType id="pedestrian" vClass="pedestrian"/>
 
     <route id = "route_nw" edges = "n01_n0 n0_ts ts_w1"/>

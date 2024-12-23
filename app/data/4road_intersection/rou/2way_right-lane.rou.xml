@@ -12,18 +12,18 @@
 <routes>
     <vType id="car_60kmh" maxSpeed="70" />
 
-    <route id = "route_en" edges = "e0_e1 e1_ts ts_n1 n1_n0"/>
-    <route id = "route_ew" edges = "e0_e1 e1_ts ts_w1 w1_w0"/>
-    <route id = "route_es" edges = "e0_e1 e1_ts ts_s1 s1_s0"/>
-    <route id = "route_nw" edges = "n0_n1 n1_ts ts_w1 w1_w0"/>
-    <route id = "route_ns" edges = "n0_n1 n1_ts ts_s1 s1_s0"/>
-    <route id = "route_ne" edges = "n0_n1 n1_ts ts_e1 e1_e0"/>
-    <route id = "route_ws" edges = "w0_w1 w1_ts ts_s1 s1_s0"/>
-    <route id = "route_we" edges = "w0_w1 w1_ts ts_e1 e1_e0"/>
-    <route id = "route_wn" edges = "w0_w1 w1_ts ts_n1 n1_n0"/>
-    <route id = "route_se" edges = "s0_s1 s1_ts ts_e1 e1_e0"/>
-    <route id = "route_sn" edges = "s0_s1 s1_ts ts_n1 n1_n0"/>
-    <route id = "route_sw" edges = "s0_s1 s1_ts ts_w1 w1_w0"/>
+    <route id = "route_en" edges = "e01_e0 e0_ts ts_n1"/>
+    <route id = "route_ew" edges = "e01_e0 e0_ts ts_w1"/>
+    <route id = "route_es" edges = "e01_e0 e0_ts ts_s1"/>
+    <route id = "route_nw" edges = "n0_ts ts_w1"/>
+    <route id = "route_ns" edges = "n0_ts ts_s1"/>
+    <route id = "route_ne" edges = "n0_ts ts_e1"/>
+    <route id = "route_ws" edges = "w01_w0 w0_ts ts_s1"/>
+    <route id = "route_we" edges = "w01_w0 w0_ts ts_e1"/>
+    <route id = "route_wn" edges = "w01_w0 w0_ts ts_n1"/>
+    <route id = "route_se" edges = "s0_ts ts_e1"/>
+    <route id = "route_sn" edges = "s0_ts ts_n1"/>
+    <route id = "route_sw" edges = "s0_ts ts_w1"/>
 
     <!-- 一車線あたり主道路800台・従道路400台、主道路70% -->
     <flow id = "flow_en" route = "route_en" begin = "0" end = "1000000" vehsPerHour = "220" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
