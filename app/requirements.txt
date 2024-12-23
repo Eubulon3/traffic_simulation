@@ -1,6 +1,0 @@
-osmnx==1.9.4
-stable_baselines3==2.3.2
-sumo-rl==1.4.5
-torch==2.5.0
-gymnasium==0.29.1
-traci==1.21.0

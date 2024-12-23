@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from skopt.plots import plot_convergence, plot_objective
 from stable_baselines3.dqn.dqn import DQN
 from custom_env import CustomSumoEnvironment
+from skopt.callbacks import CheckpointSaver
+from tqdm import tqdm
 
 #環境変数
 if "SUMO_HOME" in os.environ:
@@ -46,8 +48,9 @@ def create_env(num_seconds:int, net_name: str, route_type: str, reward_fn: str):
 
 
 #評価関数
-def evaluate_hyperparameters(params, env):
+def evaluate_hyperparameters(params, env, iteration):
     learning_rate, exploration_fraction = params
+    print(f"Iteration {iteration}: Testing learning_rate={learning_rate:.5f}, exploration_fraction={exploration_fraction:.2f}")
 
     model = DQN(
         env=env,
@@ -79,6 +82,7 @@ def evaluate_hyperparameters(params, env):
             print("done")
             break
 
+    print(f"Iteration {iteration} completed with total_reward={-total_reward:.2f}")
     return -total_reward
 
 
@@ -94,7 +98,11 @@ if __name__ == "__main__":
 
     # 評価関数で環境を渡す
     def objective_function(params):
-        return evaluate_hyperparameters(params, env)
+        iteration = objective_function.iteration
+        result = evaluate_hyperparameters(params, env, iteration)
+        objective_function.iteration += 1
+        return result
+    objective_function.iteration = 1  # 初期化
 
     #ハイパーパラメーターの範囲を定義
     space = [
@@ -102,12 +110,18 @@ if __name__ == "__main__":
         Real(0.1, 0.5, name='exploration_fraction'),
     ]
 
+    n_calls = 25
+    with tqdm(total=n_calls, desc="Optimization Progress") as pbar:
+        def progress_callback(res):
+            pbar.update(1)
+
     #ベイズ最適化
     res = gp_minimize(
         objective_function,
         space,
         n_calls=25, #最適化する呼び出し回数
         random_state=0,
+        callback=[progress_callback],
     )
     #最適化結果
     print("最適なハイパーパラメータ:")
