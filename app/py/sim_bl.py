@@ -14,9 +14,9 @@ import numpy as np
 
 def create_env(num_seconds:int, net_name: str, route_type: str):
     return CustomSumoEnvironment(
-        net_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/{net_name}/{net_name}.net.xml",
-        route_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/{net_name}/rou_{route_type}/{net_name}_{route_type}.rou.xml",
-        out_csv_name=f"/Users/chashu/Desktop/dev/sumorl-venv/app/outputs/{net_name}_{route_type}_bl",
+        net_file=f"app/data/{net_name}/{net_name}.net.xml",
+        route_file=f"app/data/{net_name}/rou_{route_type}/{net_name}_{route_type}.rou.xml",
+        out_csv_name=f"results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_bl",
         use_gui=True,
         begin_time=0,
         num_seconds=num_seconds,
@@ -24,7 +24,6 @@ def create_env(num_seconds:int, net_name: str, route_type: str):
         yellow_time=3,
         delta_time=5,
         min_green=10,
-        # reward_fn=my_reward_fn,
         single_agent=True,
         fixed_ts=True,
     )
@@ -44,7 +43,7 @@ def evaluation_baseline(env):
 
         if done:
             print("シミュレーション終了.")
-            env.save_csv(f"/Users/chashu/Desktop/dev/sumorl-venv/results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_bl", 0)
+            env.save_csv(f"results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_bl", 0)
             break
 
 if __name__ == "__main__":

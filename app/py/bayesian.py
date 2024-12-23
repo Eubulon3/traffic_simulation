@@ -31,8 +31,8 @@ def total_waiting_time(traffic_tignal):
 
 def create_env(num_seconds:int, net_name: str, route_type: str, reward_fn: str):
     return CustomSumoEnvironment(
-        net_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/{net_name}/{net_name}.net.xml",
-        route_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/{net_name}/rou_{route_type}/{net_name}_{route_type}.rou.xml",
+        net_file=f"app/data/{net_name}/{net_name}.net.xml",
+        route_file=f"app/data/{net_name}/rou_{route_type}/{net_name}_{route_type}.rou.xml",
         use_gui=False,
         begin_time=0,
         num_seconds=num_seconds,

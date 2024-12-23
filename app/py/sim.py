@@ -25,10 +25,10 @@ def total_waiting_time(traffic_tignal):
 
 def create_env(num_seconds:int, net_name: str, route_type: str, reward: str):
     return CustomSumoEnvironment(
-        net_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/{net_name}/{net_name}.net.xml",
-        route_file=f"/Users/chashu/Desktop/dev/sumorl-venv/app/data/{net_name}/rou_{route_type}/{net_name}_{route_type}.rou.xml",
-        out_csv_name=f"/Users/chashu/Desktop/dev/sumorl-venv/results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_{reward}",
-        use_gui=False,
+        net_file=f"app/data/{net_name}/{net_name}.net.xml",
+        route_file=f"app/data/{net_name}/rou_{route_type}/{net_name}_{route_type}.rou.xml",
+        out_csv_name=f"results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_{reward}",
+        use_gui=True,
         begin_time=0,
         num_seconds=num_seconds,
         time_to_teleport=-1,
@@ -43,7 +43,7 @@ def create_model(env):
     return DQN(
         env=env,
         policy="MlpPolicy",
-        buffer_size="100000",
+        buffer_size=100000,
         exploration_fraction=0.15,
     )
 
@@ -67,7 +67,7 @@ def evaluation_model(env, net_name: str, route_type: str):
         if done:
             print("done.")
             print(f"累計報酬:{total_reward}")
-            env.save_csv(f"/Users/chashu/Desktop/dev/sumorl-venv/results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_{reward}", 0)
+            env.save_csv(f"results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_{reward}", 0)
             break
 
 if __name__ == "__main__":
