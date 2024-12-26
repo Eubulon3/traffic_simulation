@@ -19,9 +19,8 @@ def get_name(reward_fn):
         return reward_fn
 
 def total_waiting_time(traffic_tignal):
-    waiting_time_per_lane = traffic_tignal.get_accumulated_waiting_time_per_lane()
-    total_waiting_time = sum(waiting_time_per_lane)
-    return -total_waiting_time
+    reward = sum(traffic_tignal.get_accumulated_waiting_time_per_lane()) / 100
+    return -reward
 
 def create_env(num_seconds:int, net_name: str, route_type: str, reward: str):
     return CustomSumoEnvironment(
