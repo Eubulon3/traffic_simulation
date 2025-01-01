@@ -1,0 +1,3 @@
+Warning: Vehicle 'flow_sen.182' performs emergency braking on lane ':ts_1_0' with decel=9.00, wished=4.50, severity=1.00, time=15253.00.
+Error: send failed: Socket operation on non-socket
+Quitting (on error).

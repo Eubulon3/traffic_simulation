@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-10-31 13:52:57.592364 by randomTrips.py UNKNOWN
+<configuration>
+    <net-file value="/Users/chashu/2024-11-01-10-25-19/osm.net.xml.gz"/>
+    <output-trip-file value="./data/rou/output.rou.xml"/>
+    <route-file value="100"/>
+    <period value="10.0"/>
+</configuration>
+-->
+
+<routes>
+    <vType id="car_60kmh" maxSpeed="70" />
+    <vType id="pedestrian" vClass="pedestrian"/>
+
+    <route id = "route_nw" edges = "n01_n0 n0_ts ts_w1"/>
+    <route id = "route_nsw" edges = "n01_n0 n0_ts ts_sw1 sw1_sw11"/>
+    <route id = "route_nse" edges = "n01_n0 n0_ts ts_se1"/>
+    <route id = "route_ne" edges = "n01_n0 n0_ts ts_e1"/>
+
+    <route id = "route_wsw" edges = "w01_w0 w0_ts ts_sw1 sw1_sw11"/>
+    <route id = "route_wse" edges = "w01_w0 w0_ts ts_se1"/>
+    <route id = "route_we" edges = "w01_w0 w0_ts ts_e1"/>
+    <route id = "route_wn" edges = "w01_w0 w0_ts ts_n1"/>
+
+    <route id = "route_swse" edges = "sw01_sw0 sw0_ts ts_se1"/>
+    <route id = "route_swe" edges = "sw01_sw0 sw0_ts ts_e1"/>
+    <route id = "route_swn" edges = "sw01_sw0 sw0_ts ts_n1"/>
+    <route id = "route_sww" edges = "sw01_sw0 sw0_ts ts_w1"/>
+
+    <route id = "route_see" edges = "se01_se0 se0_ts ts_e1"/>
+    <route id = "route_sen" edges = "se01_se0 se0_ts ts_n1"/>
+    <route id = "route_sew" edges = "se01_se0 se0_ts ts_w1"/>
+    <route id = "route_sesw" edges = "se01_se0 se0_ts ts_sw1 sw1_sw11"/>
+
+    <route id = "route_en" edges = "e0_ts ts_n1"/>
+    <route id = "route_ew" edges = "e0_ts ts_w1"/>
+    <route id = "route_esw" edges = "e0_ts ts_sw1 sw1_sw11"/>
+    <route id = "route_ese" edges = "e0_ts ts_se1"/>
+
+    <!-- 一車線あたり主道路800台・従道路400台、主道路70% -->
+    <flow id = "flow_nw" route = "route_nw" begin = "0" end = "1000000" vehsPerHour = "146" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_nsw" route = "route_nsw" begin = "0" end = "1000000" vehsPerHour = "485" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_nse" route = "route_nse" begin = "0" end = "1000000" vehsPerHour = "242" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_ne" route = "route_ne" begin = "0" end = "1000000" vehsPerHour = "97" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+
+    <flow id = "flow_wsw" route = "route_wsw" begin = "0" end = "1000000" vehsPerHour = "64" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_wse" route = "route_wse" begin = "0" end = "1000000" vehsPerHour = "55" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_we" route = "route_we" begin = "0" end = "1000000" vehsPerHour = "39" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_wn" route = "route_wn" begin = "0" end = "1000000" vehsPerHour = "28" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+
+    <flow id = "flow_swse" route = "route_swse" begin = "0" end = "1000000" vehsPerHour = "365" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_swe" route = "route_swe" begin = "0" end = "1000000" vehsPerHour = "229" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_swn" route = "route_swn" begin = "0" end = "1000000" vehsPerHour = "228" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_sww" route = "route_sww" begin = "0" end = "1000000" vehsPerHour = "91" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    
+    <flow id = "flow_see" route = "route_see" begin = "0" end = "1000000" vehsPerHour = "71" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_sen" route = "route_sen" begin = "0" end = "1000000" vehsPerHour = "43" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_sew" route = "route_sew" begin = "0" end = "1000000" vehsPerHour = "14" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_sesw" route = "route_sesw" begin = "0" end = "1000000" vehsPerHour = "14" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    
+    <flow id = "flow_en" route = "route_en" begin = "0" end = "1000000" vehsPerHour = "46" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_ew" route = "route_ew" begin = "0" end = "1000000" vehsPerHour = "18" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_esw" route = "route_esw" begin = "0" end = "1000000" vehsPerHour = "18" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+    <flow id = "flow_ese" route = "route_ese" begin = "0" end = "1000000" vehsPerHour = "9" deaprtSpeed = "max" departLane = "best" type = "car_60kmh"/>
+
+
+    <personFlow id="ped_flow_1_2" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_n1" to="ts_w1"/></personFlow>
+    <personFlow id="ped_flow_1_3" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_n1" to="sw1_sw11"/></personFlow>
+    <personFlow id="ped_flow_1_4" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_n1" to="ts_se1"/></personFlow>
+    <personFlow id="ped_flow_1_5" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_n1" to="ts_e1"/></personFlow>
+
+    <personFlow id="ped_flow_2_3" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_w1" to="sw1_sw11"/></personFlow>
+    <personFlow id="ped_flow_2_4" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_w1" to="ts_se1"/></personFlow>
+    <personFlow id="ped_flow_2_5" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_w1" to="ts_e1"/></personFlow>
+    <personFlow id="ped_flow_2_1" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_w1" to="ts_n1"/></personFlow>
+
+    <personFlow id="ped_flow_3_4" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="sw1_sw11" to="ts_se1"/></personFlow>
+    <personFlow id="ped_flow_3_5" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="sw1_sw11" to="ts_e1"/></personFlow>
+    <personFlow id="ped_flow_3_1" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="sw1_sw11" to="ts_n1"/></personFlow>
+    <personFlow id="ped_flow_3_2" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="sw1_sw11" to="ts_w1"/></personFlow>
+
+    <personFlow id="ped_flow_4_5" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_se1" to="ts_e1"/></personFlow>
+    <personFlow id="ped_flow_4_1" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_se1" to="ts_n1"/></personFlow>
+    <personFlow id="ped_flow_4_2" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_se1" to="ts_w1"/></personFlow>
+    <personFlow id="ped_flow_4_3" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_se1" to="sw1_sw11"/></personFlow>
+
+    <personFlow id="ped_flow_5_1" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_e1" to="ts_n1"/></personFlow>
+    <personFlow id="ped_flow_5_2" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_e1" to="ts_w1"/></personFlow>
+    <personFlow id="ped_flow_5_3" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_e1" to="sw1_sw11"/></personFlow>
+    <personFlow id="ped_flow_5_4" type="pedestrian" begin="0" end="1000000" perHour="25"><walk from="ts_e1" to="ts_se1"/></personFlow>
+
+</routes>
