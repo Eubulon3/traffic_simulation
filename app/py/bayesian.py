@@ -8,7 +8,6 @@ from skopt.plots import plot_convergence, plot_objective
 from stable_baselines3.dqn.dqn import DQN
 from custom_env import CustomSumoEnvironment
 from skopt.callbacks import CheckpointSaver
-from tqdm import tqdm
 
 #環境変数
 if "SUMO_HOME" in os.environ:
@@ -47,44 +46,6 @@ def create_env(num_seconds:int, net_name: str, route_type: str, reward_fn: str):
     )
 
 
-#評価関数
-def evaluate_hyperparameters(params, env, iteration):
-    learning_rate, exploration_fraction = params
-    print(f"Iteration {iteration}: Testing learning_rate={learning_rate:.5f}, exploration_fraction={exploration_fraction:.2f}")
-
-    model = DQN(
-        env=env,
-        policy="MlpPolicy",
-        learning_rate=learning_rate,
-        exploration_fraction=exploration_fraction,
-        verbose=0
-    )
-
-    model.learn(total_timesteps=timesteps)
-
-    #シミュレーション実行
-    obs, info = env.reset()
-    total_reward = 0
-    done = False
-    _n_calls = 0
-
-    while not done:
-        action, _states = model.predict(obs)
-        step_result = env.step(action)
-        
-        obs, rewards, terminated, truncated, info = step_result
-        # sim_step = info.get("step")
-        total_reward += rewards
-        done = terminated or truncated
-
-        if done:
-            _n_calls += 1
-            print("done")
-            break
-
-    print(f"Iteration {iteration} completed with total_reward={-total_reward:.2f}")
-    return -total_reward
-
 
 if __name__ == "__main__":
     timesteps = 100000
@@ -95,40 +56,75 @@ if __name__ == "__main__":
     reward = get_name(reward_fn)
 
     env = create_env(num_seconds, net_name, route_type, reward_fn)
+    
+    def f(x):
+        learning_rate, exploration_fraction = x
+        iteration =  f.iteration
+        print(f"Iteration {iteration}: Testing learning_rate={learning_rate:.5f}, exploration_fraction={exploration_fraction:.2f}")
 
-    # 評価関数で環境を渡す
-    def objective_function(params):
-        iteration = objective_function.iteration
-        result = evaluate_hyperparameters(params, env, iteration)
-        objective_function.iteration += 1
-        return result
-    objective_function.iteration = 1  # 初期化
+        model = DQN(
+            env=env,
+            policy="MlpPolicy",
+            learning_rate=learning_rate,
+            exploration_fraction=exploration_fraction,
+            batch_size=200,
+            buffer_size = 100000,
+            verbose=0,
+        )
+
+        model.learn(total_timesteps=timesteps)
+
+        #シミュレーション実行
+        obs, info = env.reset()
+        total_reward = 0
+        done = False
+        _n_calls = 0
+
+        while not done:
+            action, _states = model.predict(obs)
+            step_result = env.step(action)
+            
+            obs, rewards, terminated, truncated, info = step_result
+            # sim_step = info.get("step")
+            total_reward += rewards
+            done = terminated or truncated
+
+            if done:
+                _n_calls += 1
+                print("done")
+                break
+
+        print(f"Iteration {iteration} completed with total_reward={-total_reward:.2f}")
+        f.iteration += 1
+        return -total_reward
+    
+    
+    f.iteration = 1  # 初期化
 
     #ハイパーパラメーターの範囲を定義
     space = [
-        Real(1e-5, 1e-2, prior="log-uniform", name="learning_rate"),
+        Real(1e-5, 1e-2, name="learning_rate"),
         Real(0.1, 0.5, name='exploration_fraction'),
     ]
 
     n_calls = 25
-    with tqdm(total=n_calls, desc="Optimization Progress") as pbar:
-        def progress_callback(res):
-            pbar.update(1)
 
     #ベイズ最適化
     res = gp_minimize(
-        objective_function,
+        f,
         space,
         n_calls=25, #最適化する呼び出し回数
         random_state=0,
-        callback=[progress_callback],
+        verbose=True,
     )
+
     #最適化結果
     print("最適なハイパーパラメータ:")
     print(f"学習率: {res.x[0]}")
     print(f"探索率: {res.x[1]}")
     print(f"最大化された報酬: {-res.fun}")
 
+    print(res)
     try:
         # 最適化の収束過程をプロット
         plot_convergence(res)
@@ -143,3 +139,4 @@ if __name__ == "__main__":
         plt.show()
     except Exception as e:
         print(f"Error occurred while plotting: {e}")
+    

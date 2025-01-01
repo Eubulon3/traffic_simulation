@@ -1,2 +1,2 @@
-Error: tcpip::Socket::recvAndCheck @ recv: peer shutdown
+Error: tcpip::Socket::recvAndCheck @ recv: Connection reset by peer
 Quitting (on error).

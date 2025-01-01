@@ -22,6 +22,7 @@ def total_waiting_time(traffic_tignal):
     waiting_time_per_lane = traffic_tignal.get_accumulated_waiting_time_per_lane()
     total_waiting_time = sum(waiting_time_per_lane)
     return -total_waiting_time
+    
 
 def create_env(num_seconds:int, net_name: str, route_type: str, reward_fn: str):
     return CustomSumoEnvironment(
@@ -49,7 +50,7 @@ class DQNSumoWrapper(BaseEstimator, ClassifierMixin):
         if self.env is None:
             self.env = create_env(
                 num_seconds=100000,
-                net_name="ehira",
+                net_name="tanimachi9",
                 route_type="a",
                 reward_fn="diff-waiting-time",
             )
@@ -87,6 +88,8 @@ opt = BayesSearchCV(
     param_space,
     n_iter=25,
     cv=3,
+    verbose=3,
+    n_jobs=-1,
 )
 
 X_dummy = np.zeros((10,1))

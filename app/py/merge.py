@@ -1,19 +1,12 @@
 import pandas as pd
 
 timesteps = 100000
-date = "12_20"
+date = "12_27"
 net_name = "ehira"
-route_type = "a"
+route_type = "c"
 reward = "diff-waiting-time"
 
 # CSVファイルのリスト
-# csv_files = [
-#     f"/Users/chashu/Desktop/dev/sumorl-venv/results/4road_intersection_conn0_ep2.csv",
-#     f"/Users/chashu/Desktop/dev/sumorl-venv/results/4road_intersection_conn0_ep4.csv",
-#     f"/Users/chashu/Desktop/dev/sumorl-venv/results/4road_intersection_conn0_ep6.csv",
-#     f"/Users/chashu/Desktop/dev/sumorl-venv/results/4road_intersection_conn0_ep8.csv",
-#     f"/Users/chashu/Desktop/dev/sumorl-venv/results/4road_intersection_conn0_ep10.csv",
-#     ]
 csv_files = [
     f"/Users/chashu/Desktop/dev/sumorl-venv/results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_{reward}_conn0_ep2.csv",
     f"/Users/chashu/Desktop/dev/sumorl-venv/results/{date}/{net_name}_{route_type}/{net_name}_{route_type}_{reward}_conn0_ep4.csv",

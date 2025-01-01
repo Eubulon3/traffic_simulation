@@ -42,8 +42,9 @@ def create_model(env):
     return DQN(
         env=env,
         policy="MlpPolicy",
+        learning_rate=12e-4,
         buffer_size=100000,
-        exploration_fraction=0.15,
+        exploration_fraction=0.5,
     )
 
 def evaluation_model(env, net_name: str, route_type: str):
@@ -72,9 +73,9 @@ def evaluation_model(env, net_name: str, route_type: str):
 if __name__ == "__main__":
     timesteps = 100000
     num_seconds:int = 100000
-    date = "12_20"
+    date = "12_27"
     net_name = "ehira"
-    route_type = "a"
+    route_type = "c"
     reward_fn = "diff-waiting-time"
     reward = get_name(reward_fn)
 
