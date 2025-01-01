@@ -1,4 +1,0 @@
-step,system_total_stopped,system_total_waiting_time,system_mean_waiting_time,system_mean_speed,tl_stopped,tl_accumulated_waiting_time,tl_average_speed,agents_total_stopped,agents_total_accumulated_waiting_time
-0.0,0,0.0,0.0,0.0,0,0.0,1.0,0,0.0
-5.0,0,0.0,0.0,4.896360998835105,0,0.0,0.398196648452633,0,0.0
-10.0,2,0.0,0.0,10.395809503395066,1,0.0,0.802118570777472,1,0.0
