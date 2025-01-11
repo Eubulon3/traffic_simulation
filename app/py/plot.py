@@ -52,7 +52,7 @@ def plot_df(df, color, xaxis, yaxis, ma=1, label=""):
     plt.plot(x, mean, label=label, color=color, linestyle=next(dashes_styles))
     plt.fill_between(x, mean + std, mean - std, alpha=0.25, color=color, rasterized=True)
 
-    plt.ylim([0,30000])
+    plt.ylim([0,60000])
     # plt.xlim([40000, 70000])
 
 

@@ -50,9 +50,9 @@ def create_env(num_seconds:int, net_name: str, route_type: str, reward_fn: str):
 if __name__ == "__main__":
     timesteps = 100000
     num_seconds:int = 100000
-    net_name = "ehira"
+    net_name = "tanimachi9"
     route_type = "a"
-    reward_fn = "diff-waiting-time"
+    reward_fn = total_waiting_time
     reward = get_name(reward_fn)
 
     env = create_env(num_seconds, net_name, route_type, reward_fn)

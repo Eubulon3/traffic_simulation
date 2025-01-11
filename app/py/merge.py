@@ -1,9 +1,9 @@
 import pandas as pd
 
 timesteps = 100000
-date = "12_27"
-net_name = "ehira"
-route_type = "c"
+date = "1_10"
+net_name = "tanimachi9"
+route_type = "a"
 reward = "diff-waiting-time"
 
 # CSVファイルのリスト

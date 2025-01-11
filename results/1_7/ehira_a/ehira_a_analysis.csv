@@ -1,0 +1,8 @@
+Metrics,baseline,dqn_diff-waiting-time,dqn_total_waiting_time,dqn_diff-waiting-time_vs_baseline,dqn_total_waiting_time_vs_baseline
+system_total_waiting_time,2123.24,2212.171,1025.244,-4.188,51.713
+system_mean_waiting_time,37.886,35.417,21.927,6.517,42.124
+system_mean_speed,2.334,2.421,2.915,-3.728,-24.893
+system_total_time_loss,5104.651,4468.605,2938.049,12.46,42.444
+system_mean_time_loss,93.194,74.299,62.652,20.275,32.772
+system_total_depart_delay,543317.168,351891.034,404693.536,35.233,25.514
+system_mean_depart_delay,10182.953,6202.945,8785.003,39.085,13.728

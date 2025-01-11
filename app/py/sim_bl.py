@@ -21,7 +21,7 @@ def create_env(num_seconds:int, net_name: str, route_type: str):
         begin_time=0,
         num_seconds=num_seconds,
         time_to_teleport=-1,
-        yellow_time=3,
+        yellow_time=4,
         delta_time=5,
         min_green=10,
         single_agent=True,
@@ -49,9 +49,9 @@ def evaluation_baseline(env):
 if __name__ == "__main__":
     timesteps = 100000
     num_seconds:int = timesteps
-    date = "12_12"
+    date = "1_6"
     net_name = "ehira"
-    route_type = "a"
+    route_type = "c"
 
     env = create_env(num_seconds, net_name, route_type)
     evaluation_baseline(env)

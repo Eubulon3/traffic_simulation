@@ -191,7 +191,7 @@ class CustomSumoEnvironment(SumoEnvironment):
             "system_total_waiting_time": sum(waiting_times),
             "system_mean_waiting_time": 0.0 if len(vehicles) == 0 else np.mean(waiting_times),
             "system_mean_speed": 0.0 if len(vehicles) == 0 else np.mean(speeds),
-            "ststem_total_time_loss": sum(time_loss),
+            "system_total_time_loss": sum(time_loss),
             "system_mean_time_loss": 0.0 if len(vehicles) == 0 else np.mean(time_loss),
             "system_total_depart_delay": sum(depart_delay),
             "system_mean_depart_delay": 0.0 if len(vehicles) == 0 else np.mean(depart_delay)

@@ -1,0 +1,62 @@
+{
+    "Metrics": [
+        "system_total_stopped",
+        "system_total_waiting_time",
+        "system_mean_waiting_time",
+        "system_mean_speed",
+        "system_total_time_loss",
+        "system_mean_time_loss",
+        "system_total_depart_delay",
+        "system_mean_depart_delay"
+    ],
+    "baseline": [
+        57.449,
+        3547.142,
+        46.465,
+        1.581,
+        8681.187,
+        114.485,
+        1383302.364,
+        18259.556
+    ],
+    "dqn_diff-waiting-time": [
+        54.005,
+        3691.414,
+        51.338,
+        1.72,
+        12189.92,
+        169.231,
+        1517168.311,
+        21022.018
+    ],
+    "dqn_total_waiting_time": [
+        51.348,
+        2117.421,
+        29.712,
+        1.965,
+        6192.454,
+        86.747,
+        712560.016,
+        9933.476
+    ],
+    "dqn_diff-waiting-time_vs_baseline": [
+        5.995,
+        -4.067,
+        -10.487,
+        -8.792,
+        -40.418,
+        -47.819,
+        -9.677,
+        -15.129
+    ],
+    "dqn_total_waiting_time_vs_baseline": [
+        10.62,
+        40.306,
+        36.055,
+        -24.288,
+        28.668,
+        24.229,
+        48.488,
+        45.598
+    ]
+}

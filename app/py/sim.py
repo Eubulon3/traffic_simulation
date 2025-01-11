@@ -38,13 +38,14 @@ def create_env(num_seconds:int, net_name: str, route_type: str, reward: str):
         single_agent=True,
     )
 
-def create_model(env):
+def create_model(env, lerning_rate, exploration_fraction):
     return DQN(
         env=env,
         policy="MlpPolicy",
-        learning_rate=12e-4,
+        learning_rate=29e-4,
         buffer_size=100000,
-        exploration_fraction=0.5,
+        batch_size=200,
+        exploration_fraction=0.23,
     )
 
 def evaluation_model(env, net_name: str, route_type: str):
@@ -73,14 +74,16 @@ def evaluation_model(env, net_name: str, route_type: str):
 if __name__ == "__main__":
     timesteps = 100000
     num_seconds:int = 100000
-    date = "12_27"
+    date = "1_5"
     net_name = "ehira"
     route_type = "c"
-    reward_fn = "diff-waiting-time"
+    reward_fn = total_waiting_time
+    lerning_rate = 59e-4
+    exploration_fraction = 0.08
     reward = get_name(reward_fn)
 
     env = create_env(num_seconds, net_name, route_type, reward)
-    model = create_model(env)
+    model = create_model(env, lerning_rate, exploration_fraction)
 
     model.learn(total_timesteps=timesteps)
 
