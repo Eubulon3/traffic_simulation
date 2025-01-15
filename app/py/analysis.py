@@ -2,16 +2,16 @@ import pandas as pd
 import json
 
 # 入力データのパス設定
-net_name = "ehira"
+net_name = "tanimachi9"
 route_type = "c"
 reward_1 = "diff-waiting-time"
 reward_2 = "total_waiting_time"
 
 # ファイルパス
-dqn_csv_1 = f"results/1_5/{net_name}_{route_type}/{net_name}_{route_type}_{reward_1}_conn0_ep0.csv"
-dqn_csv_2 = f"results/1_5/{net_name}_{route_type}/{net_name}_{route_type}_{reward_2}_conn0_ep0.csv"
-bl_csv_file = f"results/1_6/{net_name}_{route_type}/{net_name}_{route_type}_bl_conn0_ep0.csv"
-output_json_path = f"results/1_7/{net_name}_{route_type}/{net_name}_{route_type}_analysis.json"
+dqn_csv_1 = f"results/1_11/{net_name}_{route_type}/{net_name}_{route_type}_{reward_1}_conn0_ep0.csv"
+dqn_csv_2 = f"results/1_12/{net_name}_{route_type}/{net_name}_{route_type}_{reward_2}_conn0_ep0.csv"
+bl_csv_file = f"results/1_13/{net_name}_{route_type}/{net_name}_{route_type}_bl_conn0_ep0.csv"
+output_json_path = f"results/1_13/{net_name}_{route_type}/{net_name}_{route_type}_analysis.json"
 
 # CSVファイル読み込み
 dqn_data_1 = pd.read_csv(dqn_csv_1)

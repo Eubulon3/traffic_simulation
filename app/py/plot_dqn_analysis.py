@@ -89,13 +89,14 @@ def analyze_and_plot(csv_files, xaxis, yaxis, ma=1, xlabel="", ylabel="", title=
 
 # 使用例
 if __name__ == "__main__":
-    net_name = "ehira"
+    net_name = "tanimachi9"
     reward = "diff-waiting-time"
+    analysis_date = "1_13"
     # 使用するCSVファイルのリスト
     csv_files = [
-        f"results/1_5/{net_name}_a/{net_name}_a_{reward}_conn0_dqn.csv",
-        f"results/1_5/{net_name}_b/{net_name}_b_{reward}_conn0_dqn.csv",
-        f"results/1_5/{net_name}_c/{net_name}_c_{reward}_conn0_dqn.csv",
+        f"results/1_10/{net_name}_a/{net_name}_a_{reward}_conn0_dqn.csv",
+        f"results/1_11/{net_name}_b/{net_name}_b_{reward}_conn0_dqn.csv",
+        f"results/1_11/{net_name}_c/{net_name}_c_{reward}_conn0_dqn.csv",
         ]
 
     # 分析とプロット
@@ -107,5 +108,5 @@ if __name__ == "__main__":
         xlabel="Time Step (seconds)",
         ylabel="Loss Time (seconds)",
         title="",
-        output=f"results/1_7/DQNTransitionComparison_{net_name}_{reward}.jpg",  # 出力ファイル名（指定しない場合は画面に表示）
+        output=f"results/{analysis_date}/DQNTransitionComparison_{net_name}_{reward}.jpg",  # 出力ファイル名（指定しない場合は画面に表示）
     )

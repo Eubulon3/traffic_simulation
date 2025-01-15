@@ -49,8 +49,8 @@ def evaluation_baseline(env):
 if __name__ == "__main__":
     timesteps = 100000
     num_seconds:int = timesteps
-    date = "1_6"
-    net_name = "ehira"
+    date = "1_13"
+    net_name = "tanimachi9"
     route_type = "c"
 
     env = create_env(num_seconds, net_name, route_type)

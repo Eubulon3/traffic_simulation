@@ -70,7 +70,7 @@ def analyze_and_plot(csv_files, xaxis, yaxis, ma=1, xlabel="", ylabel="", title=
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.legend()  # 凡例を表示
-    plt.ylim([0, 1500000])
+    plt.ylim([0, 30000])
 
     # 保存または表示
     if output:
@@ -79,23 +79,24 @@ def analyze_and_plot(csv_files, xaxis, yaxis, ma=1, xlabel="", ylabel="", title=
 
 # 使用例
 if __name__ == "__main__":
-    net_name = "ehira"
+    net_name = "tanimachi9"
     route_type = "c"
+    analysis_date = "1_13"
     # 使用するCSVファイルのリスト
     csv_files = [
-        f"results/1_6/{net_name}_{route_type}/{net_name}_{route_type}_bl_conn0_ep0.csv",
-        f"results/1_5/{net_name}_{route_type}/{net_name}_{route_type}_diff-waiting-time_conn0_ep0.csv",
-        f"results/1_5/{net_name}_{route_type}/{net_name}_{route_type}_total_waiting_time_conn0_ep0.csv",
+        f"results/1_13/{net_name}_{route_type}/{net_name}_{route_type}_bl_conn0_ep0.csv",
+        f"results/1_11/{net_name}_{route_type}/{net_name}_{route_type}_diff-waiting-time_conn0_ep0.csv",
+        f"results/1_12/{net_name}_{route_type}/{net_name}_{route_type}_total_waiting_time_conn0_ep0.csv",
         ]
 
     # 分析とプロット
     analyze_and_plot(
         csv_files=csv_files,
         xaxis="step",
-        yaxis="system_total_depart_delay",
+        yaxis="system_total_time_loss",
         ma=10,
         xlabel="Time Step (seconds)",
         ylabel="Loss Time (seconds)",
         title="",
-        output=f"results/1_7/DepartDelayTransitionComparison_{net_name}_{route_type}.jpg",  # 出力ファイル名（指定しない場合は画面に表示）
+        output=f"results/{analysis_date}/TimeLoseTransitionComparison_{net_name}_{route_type}.jpg",  # 出力ファイル名（指定しない場合は画面に表示）
     )
