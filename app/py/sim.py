@@ -36,6 +36,7 @@ def create_env(num_seconds:int, net_name: str, route_type: str, reward: str):
         min_green=10,
         reward_fn=reward_fn,
         single_agent=True,
+        additional_sumo_cmd=f"--gui-settings-file app/data/{net_name}/{net_name}_decals.xml"
     )
 
 def create_model(env, lerning_rate, exploration_fraction):
